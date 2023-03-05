@@ -1,7 +1,16 @@
-import CitiCard from '../../components/citi-card/CitiCard';
+import CityCard from '../../components/city-card/CityCard';
 
 type MainScreenProps = {
   offersCount: number;
+}
+
+
+function renderCityCards(value: number, cityCard: JSX.Element) {
+  const arrayOfCards = [];
+  for (let i = 0; i < value; i++) {
+    arrayOfCards.push(<CityCard />);
+  }
+  return arrayOfCards;
 }
 
 function Main({ offersCount }: MainScreenProps): JSX.Element {
@@ -13,7 +22,7 @@ function Main({ offersCount }: MainScreenProps): JSX.Element {
           <ul className="locations__list tabs__list">
             <li className="locations__item">
               <a className="locations__item-link tabs__item" href="#">
-                <span>Paris</span>
+                <span>Paris{offersCount}</span>
               </a>
             </li>
             <li className="locations__item">
@@ -65,11 +74,7 @@ function Main({ offersCount }: MainScreenProps): JSX.Element {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              <CitiCard />
-              <CitiCard />
-              <CitiCard />
-              <CitiCard />
-              <CitiCard />
+              {renderCityCards(offersCount, <CityCard />)}
             </div>
           </section>
           <div className="cities__right-section">

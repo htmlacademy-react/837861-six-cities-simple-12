@@ -6,11 +6,7 @@ type AppScreenProps = {
 
 function App({ offersCount }: AppScreenProps): JSX.Element {
   return (
-    <div>
-      <Main
-        offersCount={offersCount}
-      />
-    </div>
+    <Main offersCount={offersCount} />
   );
 }
 
