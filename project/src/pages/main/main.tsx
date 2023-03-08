@@ -1,4 +1,4 @@
-import CityCard from '../../components/city-card/CityCard';
+import CityCard from '../../components/city-card/cityCard';
 
 type MainScreenProps = {
   offersCount: number;
@@ -8,7 +8,7 @@ type MainScreenProps = {
 function renderCityCards(value: number, cityCard: JSX.Element) {
   const arrayOfCards = [];
   for (let i = 0; i < value; i++) {
-    arrayOfCards.push(<CityCard />);
+    arrayOfCards.push(<CityCard key={i} />);
   }
   return arrayOfCards;
 }
