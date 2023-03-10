@@ -5,7 +5,7 @@ import Login from '../../pages/login/login';
 import Room from '../../pages/room/room';
 import NotFound from './../not-found/notFound';
 
-type AppScreenProps = { offersCount: number; }
+type AppScreenProps = { offersCount: number }
 
 function App({ offersCount }: AppScreenProps): JSX.Element {
   return (
