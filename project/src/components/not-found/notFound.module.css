@@ -1,0 +1,14 @@
+h1 {
+  color: yellowgreen;
+  text-align: center;
+}
+
+.backLink {
+  color: blue;
+  font-size: 28px;
+  text-decoration: underline;
+}
+
+.container {
+  text-align: center;
+}
