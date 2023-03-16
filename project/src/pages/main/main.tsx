@@ -1,19 +1,14 @@
-import CityCard from '../../components/city-card/cityCard';
+import OffersList from '../../components/offers-list/offers-list';
+import ReviewSendingForm from '../../components/review-sending-form/review-sending-form';
+import { OffersTypes } from '../../types/offers-types';
+
 
 type MainScreenProps = {
-  offersCount: number;
+  offers: OffersTypes[];
 }
 
+function Main({ offers }: MainScreenProps): JSX.Element {
 
-function renderCityCards(value: number, cityCard: JSX.Element) {
-  const arrayOfCards = [];
-  for (let i = 0; i < value; i++) {
-    arrayOfCards.push(<CityCard key={i} />);
-  }
-  return arrayOfCards;
-}
-
-function Main({ offersCount }: MainScreenProps): JSX.Element {
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -22,7 +17,7 @@ function Main({ offersCount }: MainScreenProps): JSX.Element {
           <ul className="locations__list tabs__list">
             <li className="locations__item">
               <a className="locations__item-link tabs__item" href="#">
-                <span>Paris{offersCount}</span>
+                <span>Paris</span>
               </a>
             </li>
             <li className="locations__item">
@@ -73,14 +68,28 @@ function Main({ offersCount }: MainScreenProps): JSX.Element {
                 <li className="places__option" tabIndex={0}>Top rated first</li>
               </ul>
             </form>
-            <div className="cities__places-list places__list tabs__content">
-              {renderCityCards(offersCount, <CityCard />)}
+            <div>
+              <OffersList offers={offers} />
+              {/* {offers.map((offer) => (
+                <CityCard
+                  key={offer.id}
+                  id={offer.id}
+                  imageSrc={offer.imageSrc}
+                  price={offer.price}
+                  rating={offer.rating}
+                  linkDescription={offer.linkDescription}
+                  roomType={offer.roomType}
+                />
+              ))} */}
             </div>
           </section>
           <div className="cities__right-section">
             <section className="cities__map map"></section>
           </div>
         </div>
+      </div>
+      <div>
+        <ReviewSendingForm />
       </div>
     </main>
   );
