@@ -4,11 +4,9 @@ import { AppRoute } from '../../const';
 import Login from '../../pages/login/login';
 import Room from '../../pages/room/room';
 import NotFound from '../not-found/not-found';
-import { OffersTypes } from '../../types/offers-types';
+import { Offer } from '../../types/offer';
 
-type AppScreenProps = {
-  offers: OffersTypes[];
-}
+type AppScreenProps = { offers: Offer[] }
 
 function App({ offers }: AppScreenProps): JSX.Element {
 

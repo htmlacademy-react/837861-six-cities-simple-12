@@ -1,10 +1,10 @@
 import OffersList from '../../components/offers-list/offers-list';
 import ReviewSendingForm from '../../components/review-sending-form/review-sending-form';
-import { OffersTypes } from '../../types/offers-types';
+import { Offer } from '../../types/offer';
 
 
 type MainScreenProps = {
-  offers: OffersTypes[];
+  offers: Offer[];
 }
 
 function Main({ offers }: MainScreenProps): JSX.Element {
@@ -16,32 +16,32 @@ function Main({ offers }: MainScreenProps): JSX.Element {
         <section className="locations container">
           <ul className="locations__list tabs__list">
             <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <a className="locations__item-link tabs__item" href="/#">
                 <span>Paris</span>
               </a>
             </li>
             <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <a className="locations__item-link tabs__item" href="/#">
                 <span>Cologne</span>
               </a>
             </li>
             <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <a className="locations__item-link tabs__item" href="/#">
                 <span>Brussels</span>
               </a>
             </li>
             <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active">
+              <a className="locations__item-link tabs__item tabs__item--active" href="/#">
                 <span>Amsterdam</span>
               </a>
             </li>
             <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <a className="locations__item-link tabs__item" href="/#">
                 <span>Hamburg</span>
               </a>
             </li>
             <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <a className="locations__item-link tabs__item" href="/#">
                 <span>Dusseldorf</span>
               </a>
             </li>
@@ -70,17 +70,6 @@ function Main({ offers }: MainScreenProps): JSX.Element {
             </form>
             <div>
               <OffersList offers={offers} />
-              {/* {offers.map((offer) => (
-                <CityCard
-                  key={offer.id}
-                  id={offer.id}
-                  imageSrc={offer.imageSrc}
-                  price={offer.price}
-                  rating={offer.rating}
-                  linkDescription={offer.linkDescription}
-                  roomType={offer.roomType}
-                />
-              ))} */}
             </div>
           </section>
           <div className="cities__right-section">
@@ -88,9 +77,7 @@ function Main({ offers }: MainScreenProps): JSX.Element {
           </div>
         </div>
       </div>
-      <div>
-        <ReviewSendingForm />
-      </div>
+      <ReviewSendingForm />
     </main>
   );
 }

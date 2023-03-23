@@ -1,27 +1,21 @@
 import CityCard from '../city-card/cityCard';
-import { OffersTypes } from '../../types/offers-types';
+import { Offer } from '../../types/offer';
 import { useState } from 'react';
 
 type OffersListProp = {
-  offers: OffersTypes[];
+  offers: Offer[];
 }
 
 function OffersList({ offers }: OffersListProp): JSX.Element {
-  const [isActive, setIsActive] = useState(0);
-  console.log(`In offersList is ${isActive}`);
+  const [, setIsActiveId] = useState<number | null>(null);
   return (
     <div>
       {offers.map((offer) => (
         <CityCard
+          offer={offer}
           key={offer.id}
-          id={offer.id}
-          imageSrc={offer.imageSrc}
-          price={offer.price}
-          rating={offer.rating}
-          linkDescription={offer.linkDescription}
-          roomType={offer.roomType}
-          isActive={offer.id}
-          onMouseEnter={() => setIsActive(offer.id)}
+          onMouseEnter={() => setIsActiveId(offer.id)}
+          onMouseLeave={() => setIsActiveId(null)}
         />
       ))}
     </div>
