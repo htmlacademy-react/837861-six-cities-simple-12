@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Offer } from '../../types/offer';
+import { AppRoute, convertRating } from '../../const';
+import { generatePath } from 'react-router';
 
 type CityCardProp = {
   offer: Offer;
@@ -38,12 +40,12 @@ function CityCard({
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: Math.round(rating) * 20 }}></span>
+            <span style={{ width: convertRating(rating) }}></span>
             <span className="visually-hidden">Rating </span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${id}`}>{description}</Link>
+          <Link to={generatePath(AppRoute.Room, { id: `${offer.id}` })}>{description}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

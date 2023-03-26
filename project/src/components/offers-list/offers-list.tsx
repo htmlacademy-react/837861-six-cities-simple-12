@@ -1,4 +1,5 @@
-import CityCard from '../city-card/cityCard';
+import { Fragment } from 'react';
+import CityCard from '../city-card/city-card';
 import { Offer } from '../../types/offer';
 import { useState } from 'react';
 
@@ -9,7 +10,7 @@ type OffersListProp = {
 function OffersList({ offers }: OffersListProp): JSX.Element {
   const [, setIsActiveId] = useState<number | null>(null);
   return (
-    <div>
+    <Fragment>
       {offers.map((offer) => (
         <CityCard
           offer={offer}
@@ -18,7 +19,7 @@ function OffersList({ offers }: OffersListProp): JSX.Element {
           onMouseLeave={() => setIsActiveId(null)}
         />
       ))}
-    </div>
+    </Fragment>
   );
 }
 

@@ -16,6 +16,7 @@ export type Offer = {
   id: number;
 
 };
+
 export type City = {
   name: string;
   location: Location;
@@ -32,5 +33,3 @@ export type Host = {
   isPro: true;
   avatarUrl: string;
 };
-
-

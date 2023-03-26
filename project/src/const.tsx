@@ -4,3 +4,7 @@ export enum AppRoute {
   Room = '/offer/:id',
   NotFound = '/*',
 }
+
+export function convertRating(value: number): number {
+  return Math.round(value) * 20;
+}

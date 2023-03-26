@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 
-function ReviewSendingForm(): JSX.Element {
+function ReviewForm(): JSX.Element {
 
   const [, setRaiting] = useState('0');
   const [comment, setComment] = useState('');
@@ -20,14 +20,28 @@ function ReviewSendingForm(): JSX.Element {
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         {arrayOfStars.map((star, index) => (
-          <>
-            <input onChange={handleChange} className="form__rating-input visually-hidden" name="rating" value={`${5 - index}`} id={`${index}-stars`} type="radio" />
-            <label htmlFor={`${index}-stars`} className="reviews__rating-label form__rating-label" title={arrayOfStars[index]}>
-              <svg className="form__star-image" width="37" height="33">
+          <Fragment key={star}>
+            <input
+              onChange={handleChange}
+              className="form__rating-input visually-hidden"
+              name="rating"
+              value={`${5 - index}`}
+              id={`${5 - index}-stars`}
+              type="radio"
+            />
+            <label
+              htmlFor={`${5 - index}-stars`}
+              className="reviews__rating-label form__rating-label"
+              title={arrayOfStars[index]}
+            >
+              <svg className="form__star-image"
+                width="37"
+                height="33"
+              >
                 <use xlinkHref="#icon-star"></use>
               </svg>
             </label>
-          </>
+          </Fragment>
         ))}
       </div>
       <textarea
@@ -51,4 +65,4 @@ function ReviewSendingForm(): JSX.Element {
     </form>
   );
 }
-export default ReviewSendingForm;
+export default ReviewForm;
