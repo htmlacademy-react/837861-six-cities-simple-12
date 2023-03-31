@@ -31,7 +31,7 @@ function UseMap(
       isRenderedRef.current = true;
     }
   }, [mapRef, location]);
-  console.log(map);
+
   return map;
 }
 

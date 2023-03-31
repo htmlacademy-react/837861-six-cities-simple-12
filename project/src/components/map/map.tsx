@@ -1,13 +1,12 @@
-// import { Point, Location, Points } from '../../types/offer';
 import { useRef, useEffect } from 'react';
 import UseMap from '../../hooks/use-map';
 import { Icon, Marker } from 'leaflet';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
-import { offers } from '../../mocks/offers';
 import { Offer } from '../../types/offer';
 
 type MapProps = {
   offers: Offer[];
+  selectedPointId: number | null;
 };
 
 const defaultCustomIcon = new Icon({
@@ -22,44 +21,31 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
-function Map(props: MapProps): JSX.Element {
-
-  // console.log(offers[0]);
-  type Location = {
-    latitude: number;
-    longitude: number;
-    zoom: number;
-  }
-  const location: Location = {
-    latitude: offers[0].location.latitude,
-    longitude: offers[0].location.longitude,
-    zoom: offers[0].location.zoom,
-  };
-
-  // console.log(location);
+function Map({ offers, selectedPointId }: MapProps): JSX.Element {
+  const city = offers[0].city;
   const mapRef = useRef(null);
-  const map = UseMap(mapRef, location);
-  // console.log(map);
+  const map = UseMap(mapRef, city.location);
+
 
   useEffect(() => {
     if (map) {
+
       offers.forEach((offer) => {
-        console.log(offer);
         const marker = new Marker({
-          latitude: offer.location.latitude,
-          longitude: offer.location.longitude,
+          lat: offer.location.latitude,
+          lng: offer.location.longitude,
         });
 
         marker
           .setIcon(
-            selectedPoint !== undefined && point.title === selectedPoint.title
+            selectedPointId !== undefined && offer.id === selectedPointId
               ? currentCustomIcon
               : defaultCustomIcon
           )
           .addTo(map);
       });
     }
-  }, [map, points, selectedPoint]);
+  }, [map, offers, selectedPointId]);
 
   return (
     <div
