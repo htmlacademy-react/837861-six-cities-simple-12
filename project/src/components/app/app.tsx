@@ -2,7 +2,7 @@ import Main from '../../pages/main/main';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import Login from '../../pages/login/login';
-import Room from '../../pages/room/room';
+import Room from '../../pages/room/room-page';
 import NotFound from '../not-found/not-found';
 import { Offer } from '../../types/offer';
 
