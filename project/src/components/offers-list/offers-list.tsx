@@ -1,11 +1,10 @@
 import CityCard from '../city-card/city-card';
 import { Offer } from '../../types/offer';
-// import { useState } from 'react';
 
 type OffersListProp = {
   offers: Offer[];
-  onMouseEnter(): void;
-  onMouseLeave(): void;
+  onMouseEnter(id: number | null): void;
+  onMouseLeave(id: number | null): void;
 }
 
 function OffersList({

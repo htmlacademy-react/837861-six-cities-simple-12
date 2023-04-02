@@ -5,10 +5,9 @@ import { generatePath } from 'react-router';
 
 type CityCardProp = {
   offer: Offer;
-  onMouseEnter(): void;
-  onMouseLeave(): void;
+  onMouseEnter(id: number | null): void;
+  onMouseLeave(id: number | null): void;
 };
-
 
 function CityCard({
   offer,
@@ -16,10 +15,11 @@ function CityCard({
   onMouseLeave
 }: CityCardProp): JSX.Element {
   const { images, price, id, description, type, rating } = offer;
+
   return (
     <article
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      onMouseEnter={() => onMouseEnter(id)}
+      onMouseLeave={() => onMouseLeave(null)}
       className="cities__card place-card"
     >
       <div className="place-card__mark">

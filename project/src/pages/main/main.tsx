@@ -13,6 +13,7 @@ type MainScreenProps = {
 
 function Main({ offers }: MainScreenProps): JSX.Element {
   const [isActive, setIsActiveId] = useState<number | null>(null);
+  const handleCardHover = (id: number | null) => setIsActiveId(id);
 
   return (
     <div className="page page--gray page--main">
@@ -29,20 +30,17 @@ function Main({ offers }: MainScreenProps): JSX.Element {
               <div className="cities__places-list places__list tabs__content">
                 <OffersList
                   offers={offers}
-                  onMouseEnter={() => setIsActiveId(offers[0].id)}
-                  onMouseLeave={() => setIsActiveId(null)}
+                  onMouseEnter={handleCardHover}
+                  onMouseLeave={handleCardHover}
                 />
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map">
-                {/* <div id="map"> */}
-                <Map
-                  offers={offers}
-                  selectedPointId={isActive}
-                />
-                {/* </div> */}
-              </section>
+              <Map
+                offers={offers}
+                selectedPointId={isActive}
+                className="cities__map"
+              />
             </div>
           </div>
         </div>
