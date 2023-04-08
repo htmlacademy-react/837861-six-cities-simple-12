@@ -5,6 +5,7 @@ import Tabs from './../../components/tabs/tabs';
 import Sort from '../../components/sort/sort';
 import Map from '../../components/map/map';
 import Header from '../../components/header/header';
+// import { useAppSelector } from '../../hooks';
 // import { offers } from './../../mocks/offers';
 
 type MainScreenProps = {
@@ -13,6 +14,7 @@ type MainScreenProps = {
 
 function Main({ offers }: MainScreenProps): JSX.Element {
   const [isActive, setIsActiveId] = useState<number | null>(null);
+  // const isActive = useAppSelector((state) => state);
   const handleCardHover = (id: number | null) => setIsActiveId(id);
 
   return (
