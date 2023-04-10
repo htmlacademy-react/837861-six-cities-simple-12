@@ -5,6 +5,7 @@ import Tabs from './../../components/tabs/tabs';
 import Sort from '../../components/sort/sort';
 import Map from '../../components/map/map';
 import Header from '../../components/header/header';
+import { useAppSelector } from '../../hooks';
 // import { offers } from './../../mocks/offers';
 
 type MainScreenProps = {
@@ -13,7 +14,9 @@ type MainScreenProps = {
 
 function Main({ offers }: MainScreenProps): JSX.Element {
   const [isActive, setIsActiveId] = useState<number | null>(null);
+  const activeCity = useAppSelector((state) => state.city);
   const handleCardHover = (id: number | null) => setIsActiveId(id);
+  const arrayOfActiveOffers = offers.filter((element, index) => offers[index].city.name === activeCity);
 
   return (
     <div className="page page--gray page--main">
@@ -25,11 +28,18 @@ function Main({ offers }: MainScreenProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">312 places to stay in Amsterdam</b>
+              <b
+                className="places__found"
+              >
+                {arrayOfActiveOffers.length}
+                {arrayOfActiveOffers.length > 1 ? 'places' : 'place'} to stay in
+                {activeCity}
+              </b>
               <Sort />
               <div className="cities__places-list places__list tabs__content">
+
                 <OffersList
-                  offers={offers}
+                  offers={arrayOfActiveOffers}
                   onMouseEnter={handleCardHover}
                   onMouseLeave={handleCardHover}
                 />

@@ -1,41 +1,103 @@
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { changeCity } from '../../store/action';
+import cn from 'classnames';
+
 function Tabs(): JSX.Element {
+
+  const dispatch = useAppDispatch();
+  const activeCity = useAppSelector((state) => state.city);
+
   return (
     <div className="tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
           <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="/#">
-              <span>Paris</span>
+            <a
+              className={cn('locations__item-link tabs__item', activeCity === 'Paris' && 'tabs__item--active')}
+              href="/#"
+            >
+              <span onClick={(evt) => {
+                evt.preventDefault();
+                dispatch(changeCity({ city: 'Paris' }));
+              }}
+              >
+                Paris
+              </span>
             </a>
           </li>
           <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="/#">
-              <span>Cologne</span>
+            <a
+              className={cn('locations__item-link tabs__item', activeCity === 'Cologne' && 'tabs__item--active')}
+              href="/#"
+            >
+              <span onClick={(evt) => {
+                evt.preventDefault();
+                dispatch(changeCity({ city: 'Cologne' }));
+              }}
+              >
+                Cologne
+              </span>
             </a>
           </li>
           <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="/#">
-              <span>Brussels</span>
+            <a
+              className={cn('locations__item-link tabs__item', activeCity === 'Brussels' && 'tabs__item--active')}
+              href="/#"
+            >
+              <span onClick={(evt) => {
+                evt.preventDefault();
+                dispatch(changeCity({ city: 'Brussels' }));
+              }}
+              >
+                Brussels
+              </span>
             </a>
           </li>
           <li className="locations__item">
-            <a className="locations__item-link tabs__item tabs__item--active" href="/#">
-              <span>Amsterdam</span>
+            <a
+              className={cn('locations__item-link tabs__item', activeCity === 'Amsterdam' && 'tabs__item--active')}
+              href="/#"
+            >
+              <span onClick={(evt) => {
+                evt.preventDefault();
+                dispatch(changeCity({ city: 'Amsterdam' }));
+              }}
+              >
+                Amsterdam
+              </span>
             </a>
           </li>
           <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="/#">
-              <span>Hamburg</span>
+            <a
+              className={cn('locations__item-link tabs__item', activeCity === 'Hamburg' && 'tabs__item--active')}
+              href="/#"
+            >
+              <span onClick={(evt) => {
+                evt.preventDefault();
+                dispatch(changeCity({ city: 'Hamburg' }));
+              }}
+              >
+                Hamburg
+              </span>
             </a>
           </li>
           <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="/#">
-              <span>Dusseldorf</span>
+            <a
+              className={cn('locations__item-link tabs__item', activeCity === 'Dusseldorf' && 'tabs__item--active')}
+              href="/#"
+            >
+              <span onClick={(evt) => {
+                evt.preventDefault();
+                dispatch(changeCity({ city: 'Dusseldorf' }));
+              }}
+              >
+                Dusseldorf
+              </span>
             </a>
           </li>
         </ul>
       </section>
-    </div>
+    </div >
   );
 }
 
