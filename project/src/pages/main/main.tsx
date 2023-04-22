@@ -1,22 +1,26 @@
 import { useState } from 'react';
 import OffersList from '../../components/offers-list/offers-list';
-import { Offer } from '../../types/offer';
 import Tabs from './../../components/tabs/tabs';
 import Sort from '../../components/sort/sort';
 import Map from '../../components/map/map';
 import Header from '../../components/header/header';
 import { useAppSelector } from '../../hooks';
-// import { offers } from './../../mocks/offers';
+// import { loadOffers } from '../../store/action';
+// import { offers } from './../../mocks/offers1';
+// import { store } from '../../store';
+import { getOffers } from '../../store/offers-data/selectors';
 
-type MainScreenProps = {
-  offers: Offer[];
-}
+// type MainScreenProps = {
+//   offers: Offer[];
+// }
 
-function Main({ offers }: MainScreenProps): JSX.Element {
+function Main(): JSX.Element {
   const [isActive, setIsActiveId] = useState<number | null>(null);
   const activeCity = useAppSelector((state) => state.city);
+  const offers = useAppSelector(getOffers);
+  const activeOffers = offers.filter((element) => element.city.name === activeCity);
+
   const handleCardHover = (id: number | null) => setIsActiveId(id);
-  const arrayOfActiveOffers = offers.filter((element, index) => offers[index].city.name === activeCity);
 
   return (
     <div className="page page--gray page--main">
@@ -31,15 +35,15 @@ function Main({ offers }: MainScreenProps): JSX.Element {
               <b
                 className="places__found"
               >
-                {arrayOfActiveOffers.length}
-                {arrayOfActiveOffers.length > 1 ? 'places' : 'place'} to stay in
+                {activeOffers.length} {' '}
+                {activeOffers.length > 1 ? 'places' : 'place'} to stay in {' '}
                 {activeCity}
               </b>
               <Sort />
               <div className="cities__places-list places__list tabs__content">
 
                 <OffersList
-                  offers={arrayOfActiveOffers}
+                  offers={activeOffers}
                   onMouseEnter={handleCardHover}
                   onMouseLeave={handleCardHover}
                 />

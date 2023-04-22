@@ -4,10 +4,10 @@ import useMap from '../../hooks/use-map';
 import { Icon, Marker } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
-import { Offer } from '../../types/offer';
+import { OfferType } from '../../types/offer';
 
 type MapProps = {
-  offers: Offer[];
+  offers: OfferType[];
   selectedPointId: number | null;
   className: string;
 };

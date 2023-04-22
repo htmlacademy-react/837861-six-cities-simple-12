@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { Offer } from '../../types/offer';
+import { OfferType } from '../../types/offer';
 import { AppRoute, convertRating } from '../../const';
 import { generatePath } from 'react-router';
 
 type CityCardProp = {
-  offer: Offer;
+  offer: OfferType;
   onMouseEnter(id: number | null): void;
   onMouseLeave(id: number | null): void;
 };

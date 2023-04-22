@@ -1,8 +1,8 @@
 import CityCard from '../city-card/city-card';
-import { Offer } from '../../types/offer';
+import { OfferType } from '../../types/offer';
 
 type OffersListProp = {
-  offers: Offer[];
+  offers: OfferType[];
   onMouseEnter(id: number | null): void;
   onMouseLeave(id: number | null): void;
 }
