@@ -1,11 +1,12 @@
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { changeCity } from '../../store/action';
 import cn from 'classnames';
+import { getCurrentCity } from '../../store/ui/selectors';
+import { changeCity } from '../../store/ui/ui-process';
 
 function Tabs(): JSX.Element {
 
   const dispatch = useAppDispatch();
-  const activeCity = useAppSelector((state) => state.city);
+  const activeCity = useAppSelector(getCurrentCity);
 
   return (
     <div className="tabs">

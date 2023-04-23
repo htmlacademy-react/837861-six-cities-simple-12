@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { Offer } from '../../types/offer';
+import { OfferType } from '../../types/offer';
 import { AppRoute, convertRating } from '../../const';
 import { generatePath } from 'react-router';
 
 type CityCardProp = {
-  offer: Offer;
+  offer: OfferType;
   onMouseEnter(id: number | null): void;
   onMouseLeave(id: number | null): void;
 };
@@ -14,7 +14,7 @@ function CityCard({
   onMouseEnter,
   onMouseLeave
 }: CityCardProp): JSX.Element {
-  const { images, price, id, description, type, rating } = offer;
+  const { previewImage, price, id, title, type, rating } = offer;
 
   return (
     <article
@@ -27,7 +27,7 @@ function CityCard({
       </div>
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="/#">
-          <img className="place-card__image" src={images[id]} width="260" height="200" alt="Place img" />
+          <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place img" />
         </a>
       </div>
       <div className="place-card__info">
@@ -44,7 +44,7 @@ function CityCard({
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={generatePath(AppRoute.Room, { id: `${offer.id}` })}>{description}</Link>
+          <Link to={generatePath(AppRoute.Room, { id: `${offer.id}` })}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
