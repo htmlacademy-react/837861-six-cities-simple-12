@@ -1,48 +1,33 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { DEFAULT_SORTING, FetchStatus, NameSpace } from '../../const';
-import { fecthOffersAction } from '../api-actions';
+import { FetchStatus, NameSpace } from '../../const';
+import { fetchOffersAction } from '../api-actions';
 import { Offers } from '../../types/offer';
 
 type DataOffers = {
-  offers: Offers[];
+  offers: Offers;
   offersStatus: FetchStatus;
-  city: string;
-  sorting: string;
 };
 
 const initialState: DataOffers = {
   offers: [],
   offersStatus: FetchStatus.Idle,
-  city: 'Amsterdam',
-  sorting: DEFAULT_SORTING,
 };
 
 export const dataOffers = createSlice({
-  name: NameSpace.Data,
+  name: NameSpace.Offers,
   initialState,
-  reducers: {
-    changeSorting: (state, action) => {
-      const { sorting } = action.payload;
-      state.sorting = sorting;
-    },
-    changeCity: (state, action) => {
-      const { city } = action.payload;
-      state.city = city;
-    }
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(fecthOffersAction.pending, (state) => {
+      .addCase(fetchOffersAction.pending, (state) => {
         state.offersStatus = FetchStatus.Loading;
       })
-      .addCase(fecthOffersAction.fulfilled, (state, action) => {
+      .addCase(fetchOffersAction.fulfilled, (state, action) => {
         state.offers = action.payload;
         state.offersStatus = FetchStatus.Succes;
       })
-      .addCase(fecthOffersAction.rejected, (state) => {
+      .addCase(fetchOffersAction.rejected, (state) => {
         state.offersStatus = FetchStatus.Failed;
       });
   }
 });
-
-export const { changeSorting, changeCity } = dataOffers.action;

@@ -1,8 +1,5 @@
-// import { NameSpace } from '../../const';
 import { State } from '../../types/state';
-import { AuthorizationStatus } from '../../const';
+import { AuthorizationStatus, NameSpace } from '../../const';
 
-export const getAuthorizationStatus = (state: State): AuthorizationStatus => state.authorizationStatus;
-// export const getAuthorizationStatus = (state: State): AuthorizationStatus => state[NameSpace.User].authorizationStatus;
-export const getAuthCheckedStatus = (state: State): boolean => state.authorizationStatus !== AuthorizationStatus.Unknown;
-// export const getAuthCheckedStatus = (state: State): boolean => state[NameSpace.User].authorizationStatus !== AuthorizationStatus.Unknown;
+export const getAuthorizationStatus = (state: State): AuthorizationStatus => state[NameSpace.User].authStatus;
+export const getIsAuth = (state: State): boolean => state[NameSpace.User].authStatus === AuthorizationStatus.Auth;

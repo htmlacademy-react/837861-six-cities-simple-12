@@ -5,18 +5,12 @@ import Sort from '../../components/sort/sort';
 import Map from '../../components/map/map';
 import Header from '../../components/header/header';
 import { useAppSelector } from '../../hooks';
-// import { loadOffers } from '../../store/action';
-// import { offers } from './../../mocks/offers1';
-// import { store } from '../../store';
-import { getOffers } from '../../store/offers-data/selectors';
-
-// type MainScreenProps = {
-//   offers: Offer[];
-// }
+import { getOffers } from '../../store/data-offers/selectors';
+import { getCurrentCity } from '../../store/ui/selectors';
 
 function Main(): JSX.Element {
   const [isActive, setIsActiveId] = useState<number | null>(null);
-  const activeCity = useAppSelector((state) => state.city);
+  const activeCity = useAppSelector(getCurrentCity);
   const offers = useAppSelector(getOffers);
   const activeOffers = offers.filter((element) => element.city.name === activeCity);
 
