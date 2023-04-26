@@ -9,11 +9,13 @@ type CityCardProp = {
   onMouseLeave(id: number | null): void;
 };
 
+
 function CityCard({
   offer,
   onMouseEnter,
   onMouseLeave
 }: CityCardProp): JSX.Element {
+
   const { previewImage, price, id, title, type, rating } = offer;
 
   return (
