@@ -1,9 +1,9 @@
 import { useRef, FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
-import { AppRoute } from '../../const';
 import { AuthData } from '../../types/auth-data';
+import { useNavigate } from 'react-router-dom';
+import { AppRoute } from '../../const';
 
 function Login(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
@@ -14,6 +14,7 @@ function Login(): JSX.Element {
 
   const onSubmit = (authData: AuthData) => {
     dispatch(loginAction(authData));
+
   };
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
@@ -61,7 +62,7 @@ function Login(): JSX.Element {
               />
             </div>
             <button
-              onClick={() => navigate(AppRoute.Room)}
+              onClick={() => navigate(AppRoute.Root)}
               className="login__submit form__submit button"
               type="submit"
             >Sign in
